@@ -2,8 +2,8 @@
 
 import  socket
 
-ip="192.168.10.101"
-port=9090   #  port >6000  are generally free to use 
+rec_ip="127.0.0.1"
+rec_port=9090   #  port >6000  are generally free to use 
 
 #  calling  UDP  protocol 
 #             socket.AF_INET--->ipv4         , socket.SOCK_DGRAM--->  UDP 
@@ -13,8 +13,13 @@ s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 #   rec side only 
 #  binding ip and port 
-s.bind((ip,port))            # proving  a way to connect 
+s.bind((rec_ip,rec_port))            # proving  a way to connect 
 
 while  3  >  2	 :
-
-	print   s.recvfrom(100)  
+		# it will rec data from client / sender and its socket as well
+	rec_data=s.recvfrom(100) 
+	print   "data rec from  client :   ",rec_data[0]
+#    here  rec_data[1]  is  client ip and client port combo
+	rply=raw_input("enter your rply  :   ")
+	s.sendto(rply,rec_data[1])
+ 
