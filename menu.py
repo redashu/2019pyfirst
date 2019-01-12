@@ -1,7 +1,7 @@
 #!/usr/bin/env  python2
 
-import  webbrowser 
-
+import  webbrowser,time
+import  commands
 options='''
 Press  1  to  check your OS version  :
 Press  2  to  login your facebook account   :
@@ -17,6 +17,9 @@ choice=raw_input()
 if    int(choice)  ==  1  :
 	print  "MY OS is RHEL "
 
+elif  int(choice) ==  3: 
+	execfile('cpu_ram_check.py')
+
 
 elif  int(choice)  ==  4  : 
 	data=raw_input("type something to search on google :  ")
@@ -24,6 +27,8 @@ elif  int(choice)  ==  4  :
 
 else :
 	print  "NO valid option given "
+	print  "closing programmmm"
+	exit()
 
 
 
